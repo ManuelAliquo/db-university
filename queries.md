@@ -32,6 +32,12 @@ WHERE courses.period = "I semestre" AND courses.year = "1";
 
 5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del 20/06/2020. (21)
 
+```sql
+SELECT id, course_id, date, hour
+FROM university.exams
+WHERE HOUR(exams.hour) > 13;
+```
+
 6. Selezionare tutti i corsi di laurea magistrale. (38)
 
 7. Da quanti dipartimenti è composta l'università? (12)
