@@ -48,4 +48,15 @@ WHERE degrees.level = "magistrale"
 
 7. Da quanti dipartimenti è composta l'università? (12)
 
+```sql
+SELECT COUNT(*)
+FROM university.departments
+```
+
 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
+
+```sql
+SELECT COUNT(*)
+FROM university.teachers
+WHERE teachers.phone IS NULL;
+```
