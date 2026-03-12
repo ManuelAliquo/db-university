@@ -64,7 +64,28 @@ ORDER BY students.surname ASC, students.name ASC
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti (1317)
 
 ```sql
+SELECT
+	degrees.id AS degrees_id,
+    degrees.name AS degrees_name,
+    courses.id AS courses_id,
+    courses.name AS courses_name,
+    courses.period,
+    courses.year,
+    courses.cfu,
+    course_teacher.teacher_id AS teacher_id,
+    teachers.name AS teacher_name,
+    teachers.surname AS teacher_surname
+FROM university.degrees
 
+# unisco courses
+INNER JOIN university.courses
+ON degrees.id = courses.degree_id
+# passo dalla tabella ponte
+INNER JOIN university.course_teacher
+ON courses.id = course_teacher.course_id
+# e unisco teachers
+INNER JOIN university.teachers
+ON course_teacher.teacher_id = teachers.id;
 ```
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
