@@ -41,7 +41,24 @@ WHERE teacher_id = "44"
    sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome (5000)
 
 ```sql
+SELECT
+	students.id AS students_id,
+    students.surname,
+    students.name,
+    students.degree_id,
+    degrees.name AS degree_name,
+    degrees.level,
+    degrees.department_id,
+    departments.name AS department_name
+FROM university.students
 
+INNER JOIN university.degrees
+ON students.degree_id = degrees.id
+
+INNER JOIN university.departments
+ON degrees.department_id = departments.id
+
+ORDER BY students.surname ASC, students.name ASC
 ```
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti (1317)
